@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chatbot Dashboard</title>
+    <!--     <style type="text/css">
+    textarea {
+        border: 0 none white;
+        overflow: hidden;
+        padding: 0;
+        outline: none;
+        background-color: #D0D0D0;
+    }
+    </style> -->
+    <style>
+        div.justified {
+        display: flex;
+        margin-top: 40px;
+        justify-content: center;
+    }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">College Chat Bot</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-in"></span> logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="justified">
+        <form action="{{ url_for('saveaiml') }}" method="post">
+            <!-- <input type="text" name="content" placeholder="Content" id="content" required> -->
+            <textarea id="content" name="content" rows="30" cols="80">
+		    	{{ text }}
+			</textarea>
+            <input type="submit" value="Update">
+        </form>
+    </div>
+    <div>
+        <h3>Status : {{ msg }}</h3>
+    </div>
+</body>
+<!-- <body onload="init();">
+    <textarea rows="1" style="height:1em;" id="text">
+    	{{ text }}
+	</textarea>
+</body> -->
+<!-- <script type="text/javascript">
+var observe;
+if (window.attachEvent) {
+    observe = function(element, event, handler) {
+        element.attachEvent('on' + event, handler);
+    };
+} else {
+    observe = function(element, event, handler) {
+        element.addEventListener(event, handler, false);
+    };
+}
+
+function init() {
+    var text = document.getElementById('text');
+
+    function resize() {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight + 'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize() {
+        window.setTimeout(resize, 0);
+    }
+    observe(text, 'change', resize);
+    observe(text, 'cut', delayedResize);
+    observe(text, 'paste', delayedResize);
+    observe(text, 'drop', delayedResize);
+    observe(text, 'keydown', delayedResize);
+
+    text.focus();
+    text.select();
+    resize();
+}
+</script> -->
+
+</html>
